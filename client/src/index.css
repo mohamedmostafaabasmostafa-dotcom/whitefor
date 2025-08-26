@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Club Colors */
+  --club-red: hsl(358, 85.5%, 44.9%);
+  --club-bg: hsl(0, 0%, 5.9%);
+  --club-bg2: hsl(0, 0%, 10.2%);
+  --club-ink: hsl(0, 0%, 100%);
+  --club-muted: hsl(0, 0%, 84.7%);
+  --club-gold: hsl(51, 100%, 50%);
+  
+  /* Navigation Dimensions */
+  --nav-height: 120px;
+  --logo-height: 98px;
+  
+  /* Default shadcn variables */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(210 25% 7.8431%);
+  --card: hsl(180 6.6667% 97.0588%);
+  --card-foreground: hsl(210 25% 7.8431%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(210 25% 7.8431%);
+  --primary: hsl(203.8863 88.2845% 53.1373%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(210 25% 7.8431%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(240 1.9608% 90%);
+  --muted-foreground: hsl(210 25% 7.8431%);
+  --accent: hsl(211.5789 51.3514% 92.7451%);
+  --accent-foreground: hsl(203.8863 88.2845% 53.1373%);
+  --destructive: hsl(356.3033 90.5579% 54.3137%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(201.4286 30.4348% 90.9804%);
+  --input: hsl(200 23.0769% 97.4510%);
+  --ring: hsl(202.8169 89.1213% 53.1373%);
+  --radius: 1.3rem;
+  
+  /* Font families */
+  --font-tajawal: 'Tajawal', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.dark {
+  --background: hsl(0 0% 0%);
+  --foreground: hsl(200 6.6667% 91.1765%);
+  --card: hsl(228 9.8039% 10%);
+  --card-foreground: hsl(0 0% 85.0980%);
+  --popover: hsl(0 0% 0%);
+  --popover-foreground: hsl(200 6.6667% 91.1765%);
+  --primary: hsl(203.7736 87.6033% 52.5490%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(195.0000 15.3846% 94.9020%);
+  --secondary-foreground: hsl(210 25% 7.8431%);
+  --muted: hsl(0 0% 9.4118%);
+  --muted-foreground: hsl(210 3.3898% 46.2745%);
+  --accent: hsl(205.7143 70% 7.8431%);
+  --accent-foreground: hsl(203.7736 87.6033% 52.5490%);
+  --destructive: hsl(356.3033 90.5579% 54.3137%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(210 5.2632% 14.9020%);
+  --input: hsl(207.6923 27.6596% 18.4314%);
+  --ring: hsl(202.8169 89.1213% 53.1373%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-club-bg text-club-ink antialiased;
+    font-family: var(--font-tajawal);
+    direction: rtl;
+  }
+}
+
+@layer components {
+  /* Navigation specific styles */
+  .nav-strip::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--club-red);
+  }
+  
+  .crest-shape {
+    clip-path: polygon(12% 0, 88% 0, 100% 62%, 83% 62%, 72% 100%, 28% 100%, 17% 62%, 0 62%);
+  }
+  
+  /* Hero video styling */
+  .hero-video iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120vw;
+    height: 67.5vw;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+@layer utilities {
+  .text-club-red {
+    color: var(--club-red);
+  }
+  
+  .bg-club-red {
+    background-color: var(--club-red);
+  }
+  
+  .bg-club-bg {
+    background-color: var(--club-bg);
+  }
+  
+  .bg-club-bg2 {
+    background-color: var(--club-bg2);
+  }
+  
+  .text-club-ink {
+    color: var(--club-ink);
+  }
+  
+  .text-club-muted {
+    color: var(--club-muted);
+  }
+  
+  .text-club-gold {
+    color: var(--club-gold);
+  }
+  
+  .bg-club-gold {
+    background-color: var(--club-gold);
+  }
+  
+  .bg-club-gradient {
+    background: linear-gradient(180deg, var(--club-bg), var(--club-bg2));
+  }
+  
+  .bg-hero-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 100%);
+  }
+  
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
